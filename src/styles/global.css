@@ -1095,9 +1095,9 @@ html[data-lang='es'] .cv-document.localized-media[data-lang='es'] {
     width: 44px;
     height: 44px;
     padding: 0;
-    position: fixed;
+    position: absolute;
     top: 22px;
-    right: max(16px, calc((100vw - var(--max)) / 2));
+    right: 0;
     z-index: 120;
   }
 
@@ -1213,9 +1213,9 @@ html[data-lang='es'] .cv-document.localized-media[data-lang='es'] {
   }
 
   .site-header .language-switch {
-    position: fixed;
+    position: absolute;
     top: 22px;
-    left: max(16px, calc((100vw - var(--max)) / 2));
+    left: 0;
     z-index: 120;
     min-height: 44px;
     margin-top: 0;
