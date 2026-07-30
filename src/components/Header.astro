@@ -11,13 +11,25 @@ const { active = '' } = Astro.props;
 
 <header class="site-header">
   <a class="brand" href="/" aria-label="Lucía Alegria home">LA</a>
-  <nav aria-label="Primary navigation">
-    {navItems.map((item) => (
-      <a href={item.href} class:list={[active === item.key && 'active']}>
-        <Localized value={item.label} />
-      </a>
-    ))}
-  </nav>
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-controls="primary-navigation"
+    aria-expanded="false"
+    data-menu-toggle
+  >
+    <span class="menu-toggle-icon" aria-hidden="true"></span>
+  </button>
+  <div class="site-navigation-panel" id="primary-navigation" data-menu-panel>
+    <nav aria-label="Primary navigation">
+      {navItems.map((item) => (
+        <a href={item.href} class:list={[active === item.key && 'active']}>
+          <Localized value={item.label} />
+        </a>
+      ))}
+    </nav>
+  </div>
   <div class="language-switch" aria-label="Language selector">
     <button type="button" data-lang-toggle="es">ES</button>
     <span>/</span>
@@ -26,6 +38,53 @@ const { active = '' } = Astro.props;
 </header>
 
 <script>
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menuPanel = document.querySelector<HTMLElement>('[data-menu-panel]');
+  const mobileMenuQuery = window.matchMedia('(max-width: 820px)');
+
+  const setMenuButtonLabel = (isOpen: boolean) => {
+    if (!menuButton) {
+      return;
+    }
+
+    const lang = document.documentElement.dataset.lang === 'es' ? 'es' : 'en';
+    const label = isOpen
+      ? lang === 'es'
+        ? 'Cerrar menú de navegación'
+        : 'Close navigation menu'
+      : lang === 'es'
+        ? 'Abrir menú de navegación'
+        : 'Open navigation menu';
+    menuButton.setAttribute('aria-label', label);
+  };
+
+  const syncMenuPanelState = (isOpen: boolean) => {
+    if (!menuPanel) {
+      return;
+    }
+
+    if (mobileMenuQuery.matches) {
+      menuPanel.setAttribute('aria-hidden', String(!isOpen));
+      menuPanel.toggleAttribute('inert', !isOpen);
+    } else {
+      menuPanel.removeAttribute('aria-hidden');
+      menuPanel.removeAttribute('inert');
+    }
+  };
+
+  const setMenuOpen = (isOpen: boolean) => {
+    header?.setAttribute('data-menu-open', String(isOpen));
+    document.body.classList.toggle('menu-open', isOpen);
+
+    if (menuButton) {
+      menuButton.ariaExpanded = String(isOpen);
+    }
+
+    setMenuButtonLabel(isOpen);
+    syncMenuPanelState(isOpen);
+  };
+
   const setLanguage = (lang: 'en' | 'es') => {
     document.documentElement.dataset.lang = lang;
     document.documentElement.lang = lang;
@@ -33,6 +92,7 @@ const { active = '' } = Astro.props;
     document.querySelectorAll<HTMLButtonElement>('[data-lang-toggle]').forEach((button) => {
       button.ariaPressed = String(button.dataset.langToggle === lang);
     });
+    setMenuButtonLabel(menuButton?.ariaExpanded === 'true');
   };
 
   const initialLang =
@@ -41,11 +101,36 @@ const { active = '' } = Astro.props;
       : 'en';
 
   setLanguage(initialLang);
+  setMenuOpen(false);
 
   document.querySelectorAll<HTMLButtonElement>('[data-lang-toggle]').forEach((button) => {
     button.addEventListener('click', () => {
       const lang = button.dataset.langToggle === 'es' ? 'es' : 'en';
       setLanguage(lang);
     });
+  });
+
+  menuButton?.addEventListener('click', () => {
+    setMenuOpen(menuButton.ariaExpanded !== 'true');
+  });
+
+  menuPanel?.querySelectorAll<HTMLAnchorElement>('nav a').forEach((link) => {
+    link.addEventListener('click', () => setMenuOpen(false));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menuButton?.ariaExpanded === 'true') {
+      setMenuOpen(false);
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    const isOpen = menuButton?.ariaExpanded === 'true';
+
+    if (!mobileMenuQuery.matches && isOpen) {
+      setMenuOpen(false);
+    } else {
+      syncMenuPanelState(isOpen);
+    }
   });
 </script>
