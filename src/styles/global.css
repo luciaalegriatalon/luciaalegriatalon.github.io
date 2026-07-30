@@ -559,10 +559,24 @@ figcaption {
   object-fit: contain;
 }
 
-.cv-download {
+.cv-document {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+html[data-lang='en'] .cv-document.localized-media[data-lang='en'],
+html[data-lang='es'] .cv-document.localized-media[data-lang='es'] {
+  display: flex;
+}
+
+.cv-document object {
+  width: min(100%, 920px);
+  height: min(82vh, 980px);
+  min-height: 620px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
 }
 
 .contact-shell {

@@ -13,21 +13,27 @@ const description =
       <p class="meta"><Localized value={ui.cvEyebrow} /></p>
       <h1><Localized value={ui.cvTitle} /></h1>
     </div>
-    <div class="cv-download">
-      <a
-        class="button localized-media"
-        data-lang="en"
-        href="/assets/Resume Lucía Alegria Talon.pdf"
-        download="Resume Lucía Alegria Talon.pdf"
+    <div class="cv-document localized-media" data-lang="en">
+      <object
+        data="/assets/Resume Lucía Alegria Talon.pdf"
+        type="application/pdf"
+        aria-label="Lucía Alegria resume PDF"
       >
+        <a href="/assets/Resume Lucía Alegria Talon.pdf">Open resume PDF</a>
+      </object>
+      <a class="button" href="/assets/Resume Lucía Alegria Talon.pdf" download="Resume Lucía Alegria Talon.pdf">
         Download resume
       </a>
-      <a
-        class="button localized-media"
-        data-lang="es"
-        href="/assets/CV Lucía Alegria Talon.pdf"
-        download="CV Lucía Alegria Talon.pdf"
+    </div>
+    <div class="cv-document localized-media" data-lang="es">
+      <object
+        data="/assets/CV Lucía Alegria Talon.pdf"
+        type="application/pdf"
+        aria-label="CV de Lucía Alegria en PDF"
       >
+        <a href="/assets/CV Lucía Alegria Talon.pdf">Abrir CV en PDF</a>
+      </object>
+      <a class="button" href="/assets/CV Lucía Alegria Talon.pdf" download="CV Lucía Alegria Talon.pdf">
         Descargar currículum
       </a>
     </div>
