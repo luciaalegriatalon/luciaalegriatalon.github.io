@@ -571,12 +571,11 @@ html[data-lang='es'] .cv-document.localized-media[data-lang='es'] {
   display: flex;
 }
 
-.cv-document object {
+.cv-document img {
   width: min(100%, 920px);
-  height: min(82vh, 980px);
-  min-height: 620px;
   background: var(--panel-2);
   border: 1px solid var(--line);
+  cursor: zoom-in;
 }
 
 .contact-shell {
