@@ -195,6 +195,7 @@ h3 {
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: 0;
+  overflow-wrap: break-word;
 }
 
 .hero h1 {
@@ -666,12 +667,22 @@ figcaption {
   margin-top: 28px;
 }
 
-.tag-list span {
+.tag-list > span {
+  max-width: 100%;
   color: #071311;
   background: var(--gold);
   padding: 7px 11px;
   font-size: 14px;
   font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.tag-list > span span {
+  color: inherit;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 .content-section {
@@ -1130,7 +1141,8 @@ figcaption {
     grid-template-columns: 1fr;
   }
 
-  .insight-columns-grid {
+  .insight-columns-grid,
+  .insight-columns-section.columns-2 .insight-columns-grid {
     grid-template-columns: 1fr;
   }
 
