@@ -14,6 +14,10 @@ npm install
 npm run dev
 ```
 
+## Content Updates
+
+See [docs/actualizar-contenido.md](docs/actualizar-contenido.md) for a step-by-step guide to update existing content, add new project sections, create new pages, and publish changes.
+
 ## Checks
 
 ```sh
