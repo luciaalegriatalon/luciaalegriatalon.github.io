@@ -1,8 +1,17 @@
 export type Lang = 'en' | 'es';
 export type LocalizedString = string | { en: string; es: string };
 export type LocalizedAsset = string | { en: string; es: string };
+export type CodeSnippetId =
+  | 'tiburoncin-server'
+  | 'tiburoncin-agente'
+  | 'tiburoncin-agente-web'
+  | 'tiburoncin-empleo-utils';
 
 export function getText(value: LocalizedString, lang: Lang = 'en') {
+  return typeof value === 'string' ? value : value[lang];
+}
+
+export function getAsset(value: LocalizedAsset, lang: Lang = 'en') {
   return typeof value === 'string' ? value : value[lang];
 }
 
@@ -22,6 +31,7 @@ export type ProjectSection =
       caption?: LocalizedString;
       wide?: boolean;
       display?: 'graphic-portrait' | 'writing-portrait';
+      transparent?: boolean;
     }
   | {
       type: 'split';
@@ -69,6 +79,14 @@ export type ProjectSection =
         note?: LocalizedString;
         body: LocalizedString;
       }[];
+    }
+  | {
+      type: 'code';
+      heading?: LocalizedString;
+      body?: LocalizedString;
+      filename: string;
+      snippet: CodeSnippetId;
+      wide?: boolean;
     };
 
 export type Project = {
@@ -78,10 +96,10 @@ export type Project = {
   summary: LocalizedString;
   category: LocalizedString;
   tags: LocalizedString[];
-  thumbnail: string[];
-  thumbnailMode?: 'phone' | 'web-devices';
-  heroImage?: string;
-  heroAlt?: string;
+  thumbnail: LocalizedAsset[];
+  thumbnailMode?: 'phone' | 'web-devices' | 'wide-screenshot';
+  heroImage?: LocalizedAsset;
+  heroAlt?: LocalizedString;
   sections: ProjectSection[];
 };
 
@@ -938,6 +956,292 @@ export const projects: Project[] = [
         type: 'embed',
         url: 'https://www.youtube.com/embed/7bTPI5tvb1c',
         title: 'Interactive web apps video'
+      }
+    ]
+  },
+  {
+    slug: 'tiburoncin-job-bot',
+    sourceId: '3f4a91c6',
+    title: {
+      en: 'Sharky Job Bot',
+      es: 'Tiburoncín Job Bot'
+    },
+    category: {
+      en: 'AI assistant / Web app',
+      es: 'Asistente IA / Web app'
+    },
+    summary: {
+      en: 'A tool-based job-search assistant built with Streamlit, LangChain, Ollama, multi-provider job APIs, and local candidacy tracking.',
+      es: 'Un asistente de búsqueda laboral basado en herramientas, creado con Streamlit, LangChain, Ollama, APIs de empleo y seguimiento local de candidaturas.'
+    },
+    tags: [
+      { en: 'AI assistant', es: 'Asistente IA' },
+      'Streamlit',
+      'LangChain',
+      'Ollama',
+      { en: 'Job search', es: 'Búsqueda laboral' }
+    ],
+    thumbnail: [
+      {
+        en: '/assets/sharky1.png',
+        es: '/assets/tiburoncito1.png'
+      }
+    ],
+    heroImage: {
+      en: '/assets/sharky1.png',
+      es: '/assets/tiburoncito1.png'
+    },
+    thumbnailMode: 'wide-screenshot',
+    heroAlt: {
+      en: 'Sharky Streamlit job-search dashboard',
+      es: 'Tiburoncín Streamlit job-search dashboard'
+    },
+    sections: [
+      {
+        type: 'text',
+        heading: {
+          en: 'A practical assistant, not only a chat box',
+          es: 'Un asistente práctico, no solo un chat'
+        },
+        body: {
+          en: '<p>Sharky started as an experiment to understand how to build a bot from scratch. I chose job search because it has real assistant-like requirements: natural-language intent, external data, duplicated results, saved offers, notes, and follow-up status. The initial idea was to connect the assistant to the Infojobs API, one of the most widely used job portals in Spain, but its portal currently does not allow new application registrations.</p><p>The core goal was technical and product-driven at the same time: connect an LLM to internal tools, search across job providers, normalize the results into one interface, and let the user keep track of interesting opportunities.</p>',
+          es: '<p>Tiburoncín empezó como un experimento para entender cómo construir un bot desde cero. Elegí la búsqueda laboral porque reúne necesidades reales de un asistente: intención en lenguaje natural, datos externos, resultados duplicados, ofertas guardadas, notas y seguimiento. La idea inicial era conectar el asistente con la API de Infojobs, uno de los portales más utilizados en España, pero actualmente no está permitido el registro de nuevas aplicaciones en su portal.</p><p>El objetivo principal fue técnico y de producto a la vez: conectar un LLM con herramientas internas, buscar ofertas en diferentes proveedores, normalizar los resultados en una sola interfaz y permitir que la persona usuaria lleve el seguimiento de oportunidades interesantes.</p>'
+        }
+      },
+      {
+        type: 'slider',
+        transparent: true,
+        heading: {
+          en: 'Search, compare, open, and save from one dashboard',
+          es: 'Buscar, comparar, abrir y guardar desde un panel'
+        },
+        body: {
+          en: '<p>The Streamlit interface supports direct search without AI, provider selection, location and remote filters, result cards, comparison controls, saved searches, and one-click actions to open or save a job.</p><p>This direct path is useful when the user knows exactly what they need and wants predictable controls instead of a conversational flow.</p>',
+          es: '<p>La interfaz en Streamlit permite búsqueda directa sin IA, selección de proveedores, filtros por ubicación y remoto, tarjetas de resultados, controles de comparación, búsquedas guardadas y acciones para abrir o guardar una oferta.</p><p>Este flujo directo es útil cuando la persona sabe exactamente qué necesita y prefiere controles predecibles en lugar de una conversación.</p>'
+        },
+        images: [
+          {
+            src: {
+              en: '/assets/sharky1.png',
+              es: '/assets/tiburoncito1.png'
+            },
+            alt: 'Sharky direct search dashboard'
+          },
+          {
+            src: {
+              en: '/assets/tiburoncito2.png',
+              es: '/assets/tiburoncito2.png'
+            },
+            alt: 'Sharky search results and save action'
+          },
+          {
+            src: {
+              en: '/assets/sharky2.png',
+              es: '/assets/tiburoncito3.png'
+            },
+            alt: 'Sharky saved jobs and follow-up dashboard'
+          }
+        ]
+      },
+      {
+        type: 'columns',
+        columns: [
+          {
+            heading: {
+              en: 'Tool-based AI',
+              es: 'IA con herramientas'
+            },
+            body: {
+              en: '<p>The assistant uses LangChain tools so the model can call actions instead of only producing text. The main web tools are <code>buscar_empleos</code> for search and <code>guardar_empleo</code> for saving offers.</p>',
+              es: '<p>El asistente usa herramientas de LangChain para que el modelo pueda ejecutar acciones y no solo generar texto. Las herramientas principales son <code>buscar_empleos</code> para buscar y <code>guardar_empleo</code> para guardar ofertas.</p>'
+            }
+          },
+          {
+            heading: {
+              en: 'Provider normalization',
+              es: 'Normalización de datos'
+            },
+            body: {
+              en: '<p>The project integrates demo jobs plus Jooble, Careerjet, Adzuna, and TheirStack. Each provider returns a different shape, so results are converted into one shared offer structure and deduplicated before rendering.</p>',
+              es: '<p>El proyecto integra ofertas demo y proveedores como Jooble, Careerjet, Adzuna y TheirStack. Cada proveedor devuelve datos con una estructura distinta, por eso los resultados se convierten a un formato común y se deduplican antes de mostrarse.</p>'
+            }
+          },
+          {
+            heading: {
+              en: 'Local candidacy state',
+              es: 'Estado local de candidaturas'
+            },
+            body: {
+              en: '<p>Saved jobs are stored as structured JSON records with title, company, location, provider, salary, description, link, status, notes, and saved date. Legacy text favorites are still read for compatibility.</p>',
+              es: '<p>Las ofertas guardadas se almacenan como registros JSON con puesto, empresa, ubicación, proveedor, salario, descripción, enlace, estado, notas y fecha. También se leen favoritos antiguos en texto para mantener compatibilidad.</p>'
+            }
+          }
+        ]
+      },
+      {
+        type: 'text',
+        heading: {
+          en: 'How the system works',
+          es: 'Cómo funciona el sistema'
+        },
+        body: {
+          en: '<p>The app has two main paths. In direct search, the UI filters call the search layer directly. In chat search, the user prompt goes to a local Ollama model through LangChain; when the model needs real data or a state change, it calls the bound tools.</p><p>A key product decision was to keep chat focused on intent and explanation while rendering actionable results as UI cards. The chat response can summarize what happened, but opening, saving, filtering, comparing, and updating status remain direct interface actions.</p>',
+          es: '<p>La app tiene dos recorridos principales. En la búsqueda directa, los filtros de la interfaz llaman directamente a la capa de búsqueda. En la búsqueda por chat, el prompt llega a un modelo local de Ollama mediante LangChain; cuando el modelo necesita datos reales o modificar estado, llama a las herramientas conectadas.</p><p>Una decisión importante de producto fue mantener el chat enfocado en intención y explicación, mientras los resultados accionables se muestran como tarjetas de interfaz. La respuesta del chat puede resumir lo ocurrido, pero abrir, guardar, filtrar, comparar y actualizar estados siguen siendo acciones directas de UI.</p>'
+        }
+      },
+      {
+        type: 'media',
+        image: {
+          en: '/assets/tiburoncin_architecture_flow.png',
+          es: '/assets/tiburoncin_flujo_arquitectura_es.png'
+        },
+        alt: 'Sharky architecture and internal flow diagram',
+        wide: true,
+        transparent: true
+      },
+      {
+        type: 'media',
+        heading: {
+          en: 'Saved jobs and follow-up workflow',
+          es: 'Ofertas guardadas y seguimiento'
+        },
+        body: {
+          en: '<p>The favorites view turns search results into a small personal job pipeline. Each saved offer can be filtered, opened, updated manually through statuses, annotated with notes, or removed when it is no longer relevant.</p>',
+          es: '<p>La vista de favoritos convierte los resultados de búsqueda en un pequeño pipeline personal de candidaturas. Cada oferta guardada se puede filtrar, abrir, actualizar manualmente por estado, anotar con notas o eliminar cuando deja de ser relevante.</p>'
+        },
+        image: '/assets/tiburoncin-favorites-desktop.png',
+        alt: 'Sharky favorites and candidacy status tracking',
+        caption: {
+          en: 'Favorites list with manual candidacy statuses, notes, and open/delete actions.',
+          es: 'Lista de favoritos con estados manuales de candidatura, notas y acciones para abrir o borrar.'
+        },
+        wide: true
+      },
+      {
+        type: 'text',
+        heading: {
+          en: 'Technical process',
+          es: 'Proceso técnico'
+        },
+        body: {
+          en: '<p>To reach the current state of this prototype, the work started locally: downloading and running an LLM model, creating an MCP server to connect the model with tools and external data through a standard interface, building an agent that uses the LLM to interpret user requests and execute the right actions, and finally designing a usable interface that makes the workflow simpler and more visual.</p><p>The important shift was understanding that the model was not the whole product. The product is the system around the model: tools, provider integrations, state, error handling, and UI decisions that make the assistant useful in a real workflow.</p>',
+          es: '<p>Para llegar al estado actual de este prototipo, el trabajo empezó funcionando localmente: descargar y correr un modelo de LLM, crear un servidor MCP para conectar el modelo con herramientas y datos externos mediante una interfaz estándar, construir un agente que use el LLM para interpretar los requerimientos de la persona usuaria y ejecutar las acciones adecuadas, y finalmente diseñar una interfaz usable que permita trabajar de una manera más sencilla y visual.</p><p>El cambio importante fue entender que el modelo no era todo el producto. El producto es el sistema alrededor del modelo: herramientas, integraciones con proveedores, estado, manejo de errores y decisiones de interfaz que vuelven útil al asistente dentro de un flujo real.</p>'
+        }
+      },
+      {
+        type: 'text',
+        heading: {
+          en: '1. Downloading and running a local LLM',
+          es: '1. Descargar y correr un LLM local'
+        },
+        body: {
+          en: '<p>The first decision was to work with a local model through Ollama instead of starting with a hosted API. I used <code>llama3.2</code> as the default model and exposed it through the <code>OLLAMA_MODEL</code> environment variable.</p><p>This made the early loop simple to test: install Ollama, download the model, run the local server, and send prompts from Python through LangChain. It also helped me separate two concerns from the beginning: the LLM interprets intent, while Python functions perform the real actions.</p>',
+          es: '<p>La primera decisión fue trabajar con un modelo local a través de Ollama en lugar de empezar con una API alojada. Usé <code>llama3.2</code> como modelo por defecto y lo dejé configurable mediante la variable de entorno <code>OLLAMA_MODEL</code>.</p><p>Esto hizo que el primer ciclo fuera simple de probar: instalar Ollama, descargar el modelo, levantar el servidor local y enviar prompts desde Python usando LangChain. También me ayudó a separar desde el inicio dos responsabilidades: el LLM interpreta la intención, mientras las funciones de Python ejecutan las acciones reales.</p>'
+        }
+      },
+      {
+        type: 'code',
+        heading: {
+          en: '2. Creating the MCP server',
+          es: '2. Crear el servidor MCP'
+        },
+        body: {
+          en: '<p>The first tool experiment was an MCP server with one concrete action: save a job application. The server exposes <code>anotar_postulacion</code>, receives structured parameters, and writes the result through the existing favorite-saving utility.</p><p>This step was useful because it made the tool boundary explicit. The assistant does not “save” something by generating a sentence; it calls a function with arguments, and that function changes local state.</p>',
+          es: '<p>El primer experimento de herramienta fue un servidor MCP con una acción concreta: guardar una postulación. El servidor expone <code>anotar_postulacion</code>, recibe parámetros estructurados y escribe el resultado usando la utilidad de guardado de favoritos.</p><p>Este paso fue útil porque hizo explícito el límite de la herramienta. El asistente no “guarda” algo por generar una frase; llama a una función con argumentos, y esa función modifica el estado local.</p>'
+        },
+        filename: 'server.py',
+        snippet: 'tiburoncin-server',
+        wide: true
+      },
+      {
+        type: 'text',
+        heading: {
+          en: '3. Building the first agent loop',
+          es: '3. Construir el primer ciclo del agente'
+        },
+        body: {
+          en: '<p>Once the save action existed, I built a CLI agent in <code>agente.py</code>. This version defined two LangChain tools: one for searching jobs and one for saving a selected result. The model was created with <code>ChatOllama</code> and bound to those tools.</p><p>The communication loop works like this: the user writes a request, LangChain sends the system message and chat memory to Ollama, the model returns either a regular response or a tool call, Python executes the requested tool, and the result is added back to the conversation as a <code>ToolMessage</code>. If needed, the model receives that result and produces a final user-facing response.</p>',
+          es: '<p>Cuando ya existía la acción de guardado, construí un agente de CLI en <code>agente.py</code>. Esta versión definía dos herramientas de LangChain: una para buscar empleos y otra para guardar un resultado seleccionado. El modelo se creaba con <code>ChatOllama</code> y se vinculaba a esas herramientas.</p><p>El ciclo de comunicación funciona así: la persona escribe una solicitud, LangChain envía el mensaje de sistema y la memoria a Ollama, el modelo devuelve una respuesta normal o una llamada a herramienta, Python ejecuta la herramienta pedida y el resultado vuelve a la conversación como <code>ToolMessage</code>. Si hace falta, el modelo recibe ese resultado y genera una respuesta final para la persona usuaria.</p>'
+        }
+      },
+      {
+        type: 'code',
+        filename: 'agente.py',
+        snippet: 'tiburoncin-agente'
+      },
+      {
+        type: 'code',
+        heading: {
+          en: '4. Moving the agent into the web app',
+          es: '4. Llevar el agente a la app web'
+        },
+        body: {
+          en: '<p>In the Streamlit version, the same idea becomes part of the UI state. The app creates a local Ollama chat model, binds the search and save tools, and stores the latest chat search results in <code>st.session_state</code>.</p><p>This detail matters for usability: when the user says “save the second job”, the app should not search again. It resolves the reference against the latest visible chat results and saves that exact offer.</p>',
+          es: '<p>En la versión de Streamlit, la misma idea pasa a formar parte del estado de la interfaz. La app crea un modelo de chat local con Ollama, vincula las herramientas de búsqueda y guardado, y almacena los últimos resultados del chat en <code>st.session_state</code>.</p><p>Este detalle importa para la usabilidad: si la persona dice “guardá la segunda oferta”, la app no debería buscar otra vez. Resuelve esa referencia contra los últimos resultados visibles del chat y guarda esa oferta exacta.</p>'
+        },
+        filename: 'agente_web.py',
+        snippet: 'tiburoncin-agente-web',
+        wide: true
+      },
+      {
+        type: 'code',
+        heading: {
+          en: '5. Searching real providers and normalizing results',
+          es: '5. Buscar en proveedores reales y normalizar resultados'
+        },
+        body: {
+          en: '<p>The search layer lives in <code>empleo_utils.py</code>. It supports demo jobs from JSON plus Jooble, Careerjet, Adzuna, and TheirStack. Each provider has different credentials, request parameters, error cases, and response structures.</p><p>To keep the UI predictable, every provider result is normalized into the same offer shape: title, company, location, link, description, provider, salary, and updated date. Provider calls run in parallel, then results are merged and deduplicated by link or by title, company, and location.</p>',
+          es: '<p>La capa de búsqueda vive en <code>empleo_utils.py</code>. Soporta ofertas demo desde JSON y proveedores como Jooble, Careerjet, Adzuna y TheirStack. Cada proveedor tiene credenciales, parámetros, errores y estructuras de respuesta diferentes.</p><p>Para que la interfaz sea predecible, cada resultado se normaliza al mismo formato de oferta: título, empresa, ubicación, enlace, descripción, proveedor, salario y fecha de actualización. Las llamadas a proveedores corren en paralelo; después los resultados se combinan y se deduplican por enlace o por título, empresa y ubicación.</p>'
+        },
+        filename: 'empleo_utils.py',
+        snippet: 'tiburoncin-empleo-utils',
+        wide: true
+      },
+      {
+        type: 'text',
+        heading: {
+          en: '6. Streamlit as the final usability layer',
+          es: '6. Streamlit como capa final de usabilidad'
+        },
+        body: {
+          en: '<p>The final Streamlit app was not only a deployment choice. It changed the product. A chat-only prototype could technically search and save jobs, but it was not comfortable for repeated use and did not add enough value to the tool. Building it that way was useful as technical learning, but it did not give me anything in particular that made me want to use it.</p><p>The interface added the parts that make the assistant practical (and more interesting): direct search for precise tasks, chat for natural-language intent, provider and location controls, cards instead of raw links, comparison checkboxes, saved searches, favorites, manual candidacy statuses, notes, and temporary API configuration from the sidebar.</p><p>The main UX decision was to stop forcing every interaction into chat and add functionality so it actually behaves like an assistant that helps improve the job-search process. Chat is useful for understanding what the person wants; buttons, filters, cards, and status controls work better for actions that are repeated many times.</p>',
+          es: '<p>La app final en Streamlit no fue solo una decisión de despliegue. Cambió el producto. Un prototipo solo de chat podía buscar y guardar ofertas técnicamente, pero no era cómodo para usar de manera repetida ni agregaba valor a la herramienta. Crearlo de esta manera me sirvió como aprendizaje técnico, pero no me aportaba nada en particular que me hiciera querer utilizarlo.</p><p>La interfaz sumó las partes que hacen práctico (y más interesante) al asistente: búsqueda directa para tareas precisas, chat para intención en lenguaje natural, controles de proveedor y ubicación, tarjetas en lugar de enlaces crudos, checkboxes de comparación, búsquedas guardadas, favoritos, estados manuales de candidatura, notas y configuración temporal de APIs desde la barra lateral.</p><p>La decisión principal de UX fue dejar de forzar todas las interacciones dentro del chat y sumar funcionalidades para que realmente se comporte como un asistente que permite mejorar el proceso de búsqueda laboral. El chat sirve para entender qué quiere la persona; botones, filtros, tarjetas y controles de estado funcionan mejor para acciones que se repiten muchas veces.</p>'
+        }
+      },
+      {
+        type: 'columns',
+        columns: [
+          {
+            heading: {
+              en: 'Build process',
+              es: 'Proceso'
+            },
+            body: {
+              en: '<ul><li>Started with an MCP server experiment for saving applications.</li><li>Connected a local LLM through Ollama and LangChain.</li><li>Built provider search functions, normalization, and deduplication.</li><li>Moved from CLI experimentation to a Streamlit dashboard.</li></ul>',
+              es: '<ul><li>Empecé con un experimento de servidor MCP para guardar postulaciones.</li><li>Conecté un LLM local mediante Ollama y LangChain.</li><li>Construí funciones de búsqueda, normalización y deduplicación por proveedor.</li><li>Pasé de una prueba en CLI a un panel usable en Streamlit.</li></ul>'
+            }
+          },
+          {
+            heading: {
+              en: 'What I learned',
+              es: 'Aprendizajes'
+            },
+            body: {
+              en: '<ul><li>A useful assistant needs clear tool boundaries, not only a conversational surface.</li><li>State has to be reliable and predictable.</li><li>Data from external providers requires normalization to be readable for the user.</li><li>Chat is useful for intent, while UI controls are better for repeated actions.</li></ul>',
+              es: '<ul><li>Un asistente útil necesita límites claros entre herramientas, no solo una superficie conversacional.</li><li>El estado tiene que ser fiable y predecible.</li><li>Los datos de proveedores externos requieren normalización para ser legibles al usuario.</li><li>El chat sirve para expresar intención, pero los controles de UI funcionan mejor para acciones repetidas.</li></ul>'
+            }
+          },
+          {
+            heading: {
+              en: 'Next steps',
+              es: 'Próximos pasos'
+            },
+            body: {
+              en: '<ul><li>Add API authentication in Streamlit with query limits.</li><li>Integrate with APIs from the most widely used job portals.</li><li>Resolve the LLM integration so the user can use it without depending on an installed model.</li><li>Extend the status history and enable follow-up reminders.</li></ul>',
+              es: '<ul><li>Agregar autenticación de APIs en Streamlit con límite de consultas.</li><li>Integrar con APIs de portales de empleo más utilizados.</li><li>Resolver la integración con LLM para que el usuario pueda utilizarlo sin depender de tener un modelo instalado.</li><li>Ampliar el historial de estados y activar recordatorios de seguimiento.</li></ul>'
+            }
+          }
+        ]
       }
     ]
   },

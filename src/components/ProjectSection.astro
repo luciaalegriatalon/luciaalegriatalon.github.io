@@ -1,5 +1,9 @@
 ---
 import type { Lang, LocalizedAsset, ProjectSection } from '../data/portfolio';
+import agenteCode from '../data/tiburoncin-agente.py.txt?raw';
+import agenteWebCode from '../data/tiburoncin-agente-web.py.txt?raw';
+import empleoUtilsCode from '../data/tiburoncin-empleo-utils.py.txt?raw';
+import serverCode from '../data/tiburoncin-server.py.txt?raw';
 import Localized from './Localized.astro';
 
 type Props = {
@@ -23,6 +27,16 @@ const mediaImages =
   section.type === 'media'
     ? getAssetVariants(section.image)
     : [];
+const codeSnippets = {
+  'tiburoncin-server': serverCode,
+  'tiburoncin-agente': agenteCode,
+  'tiburoncin-agente-web': agenteWebCode,
+  'tiburoncin-empleo-utils': empleoUtilsCode
+} as const;
+const codeLines =
+  section.type === 'code'
+    ? codeSnippets[section.snippet].replace(/\n$/, '').split('\n')
+    : [];
 ---
 
 {
@@ -36,7 +50,15 @@ const mediaImages =
 
 {
   section.type === 'media' && (
-    <section class:list={['content-section', 'media-section', section.wide && 'wide', section.display]}>
+    <section
+      class:list={[
+        'content-section',
+        'media-section',
+        section.wide && 'wide',
+        section.transparent && 'transparent-media',
+        section.display
+      ]}
+    >
       {(section.heading || section.body) && (
         <div class="prose">
           {section.heading && <h2><Localized value={section.heading} /></h2>}
@@ -152,6 +174,35 @@ const mediaImages =
           </div>
         ))}
       </div>
+    </section>
+  )
+}
+
+{
+  section.type === 'code' && (
+    <section class:list={['content-section', 'code-section', section.wide && 'wide']}>
+      {(section.heading || section.body) && (
+        <div class="prose">
+          {section.heading && <h2><Localized value={section.heading} /></h2>}
+          {section.body && <Localized value={section.body} html />}
+        </div>
+      )}
+      <figure class="code-window" aria-label={section.filename}>
+        <div class="code-window-bar" aria-hidden="true">
+          <div class="code-window-controls">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span class="code-window-title">{section.filename}</span>
+        </div>
+        <pre class="code-scroll"><code>{codeLines.map((line, index) => (
+            <span class="code-line">
+              <span class="code-line-number">{index + 1}</span>
+              <span class="code-text">{line}</span>
+            </span>
+          ))}</code></pre>
+      </figure>
     </section>
   )
 }

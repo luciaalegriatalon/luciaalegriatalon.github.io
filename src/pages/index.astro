@@ -6,6 +6,10 @@ import { profile, projects, ui } from '../data/portfolio';
 
 const description =
   'Lucía Alegria is a communications specialist and UX designer based in Barcelona, focused on clear digital products and user-centered experiences.';
+const homeProjects = [
+  ...projects.filter((project) => project.slug === 'tiburoncin-job-bot'),
+  ...projects.filter((project) => project.slug !== 'tiburoncin-job-bot')
+];
 ---
 
 <BaseLayout active="home" description={description} image={profile.heroImage}>
@@ -55,6 +59,6 @@ const description =
   </section>
 
   <section class="project-grid" aria-label={typeof ui.selectedWork === 'string' ? ui.selectedWork : ui.selectedWork.en}>
-    {projects.map((project) => <ProjectCard project={project} />)}
+    {homeProjects.map((project) => <ProjectCard project={project} />)}
   </section>
 </BaseLayout>

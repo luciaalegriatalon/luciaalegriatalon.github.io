@@ -1,5 +1,5 @@
 ---
-import type { Project } from '../data/portfolio';
+import type { Lang, LocalizedAsset, Project } from '../data/portfolio';
 import Localized from './Localized.astro';
 
 type Props = {
@@ -8,12 +8,32 @@ type Props = {
 
 const { project } = Astro.props;
 const isStack = project.thumbnail.length > 1 && project.thumbnailMode !== 'web-devices';
+type ThumbnailImage = {
+  src: string;
+  index: number;
+  lang?: Lang;
+};
+const getThumbnailImages = (assets: LocalizedAsset[]): ThumbnailImage[] =>
+  assets.flatMap((asset, index) =>
+    typeof asset === 'string'
+      ? [{ src: asset, index }]
+      : [
+          { src: asset.en, index, lang: 'en' },
+          { src: asset.es, index, lang: 'es' }
+        ]
+  );
+const thumbnailImages = getThumbnailImages(project.thumbnail);
 ---
 
 <a class="project-card" href={`/work/${project.slug}/`}>
   <div class:list={['project-thumb', isStack && 'stacked', project.thumbnailMode]}>
-    {project.thumbnail.map((image, index) => (
-      <span class="thumb-image" aria-hidden="true" style={`--i: ${index}; background-image: url('${image}')`} />
+    {thumbnailImages.map((image) => (
+      <span
+        class:list={['thumb-image', image.lang && 'localized-media']}
+        data-lang={image.lang}
+        aria-hidden="true"
+        style={`--i: ${image.index}; background-image: url('${image.src}')`}
+      />
     ))}
   </div>
   <div class="project-copy">
