@@ -525,9 +525,18 @@ figcaption {
   font-size: 17px;
 }
 
+.insight-column-body p {
+  margin: 0 0 18px;
+}
+
 .insight-column-body ul {
-  margin: 0;
+  margin: 0 0 18px;
   padding-left: 20px;
+}
+
+.insight-column-body p:last-child,
+.insight-column-body ul:last-child {
+  margin-bottom: 0;
 }
 
 .insight-column-body li + li {
@@ -536,6 +545,11 @@ figcaption {
 
 .insight-column-body li::marker {
   color: var(--accent-2);
+}
+
+.insight-column-body a {
+  color: var(--cyan);
+  border-bottom: 1px solid currentColor;
 }
 
 .insight-column-body dl {

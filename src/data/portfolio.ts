@@ -906,9 +906,28 @@ export const projects: Project[] = [
           es: 'Aplicaciones web interactivas'
         },
         body: {
-          en: '<p>More dynamic projects developed with JavaScript and Vue.js, focusing on component-based architecture, interactivity, and state-driven user interfaces.</p>',
-          es: '<p>Proyectos más dinámicos desarrollados con JavaScript y Vue.js, con foco en arquitectura basada en componentes, interactividad e interfaces guiadas por estado.</p>'
+          en: '<p>More dynamic projects developed with JavaScript and Vue.js, focusing on component-based architecture, interactivity, and state-driven user interfaces.</p><p>I later revisited two of these early projects to push them beyond the first classroom version: clearer state, richer feedback, responsive behavior, accessibility improvements, and production deployment where the app is live.</p>',
+          es: '<p>Proyectos más dinámicos desarrollados con JavaScript y Vue.js, con foco en arquitectura basada en componentes, interactividad e interfaces guiadas por estado.</p><p>Más adelante volví sobre dos de estos primeros proyectos para llevarlos más allá de la primera versión de clase: estado más claro, feedback más rico, comportamiento responsive, mejoras de accesibilidad y despliegue en producción cuando la app está publicada.</p>'
         }
+      },
+      {
+        type: 'columns',
+        columns: [
+          {
+            heading: 'Roll the Dice',
+            body: {
+              en: '<p>I refactored the game from a fixed desktop exercise into a more complete browser game.</p><ul><li>Responsive desktop and mobile layout with controls that stay readable and do not overlap.</li><li>Editable player names, saved preferences, and target score options for 50, 100, or a custom goal.</li><li>Turn log, keyboard shortcuts, dice/player feedback animations, optional sound, and PWA/offline support.</li><li>Accessibility pass for the rules dialog, focus handling, live score updates, and visible keyboard focus.</li></ul><p><a href="https://lualegria-lab.github.io/rollthedice-/" target="_blank" rel="noopener noreferrer">Live demo</a> | <a href="https://github.com/lualegria-lab/rollthedice-" target="_blank" rel="noopener noreferrer">GitHub repository</a></p>',
+              es: '<p>Refactoricé el juego desde un ejercicio fijo de escritorio hacia un juego web más completo.</p><ul><li>Layout responsive para escritorio y móvil, con controles legibles y sin superposiciones.</li><li>Nombres de jugadores editables, preferencias guardadas y objetivo de puntos configurable: 50, 100 o personalizado.</li><li>Registro de turnos, atajos de teclado, animaciones de dado/jugadores, sonido opcional y soporte PWA/offline.</li><li>Mejoras de accesibilidad en el modal de reglas, manejo de foco, actualizaciones de puntaje en vivo y foco visible por teclado.</li></ul><p><a href="https://lualegria-lab.github.io/rollthedice-/" target="_blank" rel="noopener noreferrer">Demo online</a> | <a href="https://github.com/lualegria-lab/rollthedice-" target="_blank" rel="noopener noreferrer">Repositorio en GitHub</a></p>'
+            }
+          },
+          {
+            heading: 'Pokemon Challenge',
+            body: {
+              en: '<p>I iterated the Vue app from a simple Pokemon list and battle exercise into a small product backed by PokeAPI and a normalized fighter model.</p><ul><li>Paginated PokeAPI loading, local-first and full-index search, duplicate prevention, and custom fighters.</li><li>Details modal with abilities, stats, moves, height, weight, and experience.</li><li>Turn-based battle engine with speed order, type effectiveness, two moves per fighter, winner/defeated states, and a battle log.</li><li>Cleaner toolbar, compact search, simplified header, stronger game-style branding, and GitHub Pages deployment.</li></ul><p><a href="https://lualegria-lab.github.io/pokemonchallenge/" target="_blank" rel="noopener noreferrer">Live demo</a> | <a href="https://github.com/lualegria-lab/pokemonchallenge" target="_blank" rel="noopener noreferrer">GitHub repository</a></p>',
+              es: '<p>Iteré la app en Vue desde una lista simple de Pokemon con batalla básica hacia un pequeño producto conectado con PokeAPI y un modelo normalizado de luchadores.</p><ul><li>Carga paginada desde PokeAPI, búsqueda local y en el índice completo, prevención de duplicados y luchadores personalizados.</li><li>Modal de detalle con habilidades, stats, movimientos, altura, peso y experiencia.</li><li>Motor de batalla por turnos con orden por velocidad, efectividad por tipo, dos movimientos por luchador, estados de ganador/derrotado y registro de combate.</li><li>Toolbar más limpia, búsqueda compacta, header simplificado, identidad visual más cercana a un juego y despliegue en GitHub Pages.</li></ul><p><a href="https://lualegria-lab.github.io/pokemonchallenge/" target="_blank" rel="noopener noreferrer">Demo online</a> | <a href="https://github.com/lualegria-lab/pokemonchallenge" target="_blank" rel="noopener noreferrer">Repositorio en GitHub</a></p>'
+            }
+          }
+        ]
       },
       {
         type: 'slider',
@@ -928,27 +947,59 @@ export const projects: Project[] = [
           },
           {
             src: '/assets/web-rolldice1.png',
-            alt: 'Roll Dice game rules modal'
+            alt: 'Roll Dice game rules modal',
+            caption: {
+              en: 'Roll the Dice: accessible rules modal with a short ordered flow.',
+              es: 'Roll the Dice: modal de reglas accesible con pasos ordenados.'
+            }
           },
           {
             src: '/assets/web-rolldice2.png',
-            alt: 'Roll Dice game starting state'
+            alt: 'Roll Dice game target settings and starting state',
+            caption: {
+              en: 'Roll the Dice: target score settings, sound toggle, and turn log.',
+              es: 'Roll the Dice: objetivo configurable, sonido y registro de turnos.'
+            }
           },
           {
             src: '/assets/web-rolldice3.png',
-            alt: 'Roll Dice game active player state'
+            alt: 'Roll Dice game with custom names and turn log',
+            caption: {
+              en: 'Roll the Dice: custom names, custom target score, and recorded turns.',
+              es: 'Roll the Dice: nombres editables, objetivo personalizado y turnos registrados.'
+            }
           },
           {
-            src: '/assets/web-pokeapp1.webp',
-            alt: 'Pokemon Challenge homepage'
+            src: '/assets/web-pokeapp1.png',
+            alt: 'Pokemon Challenge add fighter form and live preview',
+            caption: {
+              en: 'Pokemon Challenge: custom fighter form with a live preview card.',
+              es: 'Pokemon Challenge: formulario de luchador personalizado con preview en vivo.'
+            }
           },
           {
             src: '/assets/web-pokeapp2.png',
-            alt: 'Pokemon Challenge cards grid'
+            alt: 'Pokemon Challenge cards grid loaded from PokeAPI',
+            caption: {
+              en: 'Pokemon Challenge: paginated PokeAPI grid with normalized fighter cards.',
+              es: 'Pokemon Challenge: grilla paginada desde PokeAPI con tarjetas normalizadas.'
+            }
           },
           {
             src: '/assets/web-pokeapp3.png',
-            alt: 'Pokemon Challenge battle selection'
+            alt: 'Pokemon Challenge expanded search results',
+            caption: {
+              en: 'Pokemon Challenge: compact search expands into full PokeAPI results.',
+              es: 'Pokemon Challenge: búsqueda compacta expandida con resultados de PokeAPI.'
+            }
+          },
+          {
+            src: '/assets/web-pokeapp4.png',
+            alt: 'Pokemon Challenge battle result modal',
+            caption: {
+              en: 'Pokemon Challenge: turn-based battle result with attacks, winner state, and log.',
+              es: 'Pokemon Challenge: resultado de batalla por turnos con ataques, ganador y log.'
+            }
           }
         ]
       },
