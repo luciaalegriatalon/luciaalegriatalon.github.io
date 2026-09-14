@@ -1324,6 +1324,11 @@ export const projects: Project[] = [
             }
           }
         ]
+      },
+      {
+        type: 'embed',
+        url: 'https://www.youtube.com/embed/uDHfILoQM38',
+        title: 'Sharky Job Bot video'
       }
     ]
   },
