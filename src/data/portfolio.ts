@@ -843,7 +843,7 @@ export const projects: Project[] = [
       en: 'Web design projects built with HTML, CSS, and frameworks like React and Vue. I focus on creating simple, clear, and responsive layouts that prioritize accessibility and user needs.',
       es: 'Proyectos de diseño web construidos con HTML, CSS y frameworks como React y Vue. Me enfoco en crear interfaces simples, claras y responsive, priorizando accesibilidad y necesidades de usuario.'
     },
-    tags: ['HTML', 'CSS', 'React', 'Vue'],
+    tags: ['HTML', 'CSS', 'JavaScript', 'React', 'Vue'],
     thumbnail: ['/assets/webmockupcover.webp', '/assets/webmockupcover1.webp'],
     thumbnailMode: 'web-devices',
     heroImage: '/assets/webmockupcover.webp',
@@ -906,8 +906,8 @@ export const projects: Project[] = [
           es: 'Aplicaciones web interactivas'
         },
         body: {
-          en: '<p>More dynamic projects developed with JavaScript and Vue.js, focusing on component-based architecture, interactivity, and state-driven user interfaces.</p><p>I later revisited two of these early projects to push them beyond the first classroom version: clearer state, richer feedback, responsive behavior, accessibility improvements, and production deployment where the app is live.</p>',
-          es: '<p>Proyectos más dinámicos desarrollados con JavaScript y Vue.js, con foco en arquitectura basada en componentes, interactividad e interfaces guiadas por estado.</p><p>Más adelante volví sobre dos de estos primeros proyectos para llevarlos más allá de la primera versión de clase: estado más claro, feedback más rico, comportamiento responsive, mejoras de accesibilidad y despliegue en producción cuando la app está publicada.</p>'
+          en: '<p>More dynamic projects developed with JavaScript and Vue.js, focusing on interaction, state-driven interfaces, and progressively richer front-end behavior.</p><p>Several of these started as course exercises and were later pushed further: clearer state, richer feedback, responsive behavior, accessibility improvements, separated flows, and production deployment where the app is live.</p>',
+          es: '<p>Proyectos más dinámicos desarrollados con JavaScript y Vue.js, con foco en interacción, interfaces guiadas por estado y comportamiento frontend cada vez más completo.</p><p>Varios empezaron como ejercicios de curso y luego los llevé más allá: estado más claro, feedback más rico, comportamiento responsive, mejoras de accesibilidad, flujos separados y despliegue en producción cuando la app está publicada.</p>'
         }
       },
       {
@@ -925,6 +925,13 @@ export const projects: Project[] = [
             body: {
               en: '<p>I iterated the Vue app from a simple Pokemon list and battle exercise into a small product backed by PokeAPI and a normalized fighter model.</p><ul><li>Paginated PokeAPI loading, local-first and full-index search, duplicate prevention, and custom fighters.</li><li>Details modal with abilities, stats, moves, height, weight, and experience.</li><li>Turn-based battle engine with speed order, type effectiveness, two moves per fighter, winner/defeated states, and a battle log.</li><li>Cleaner toolbar, compact search, simplified header, stronger game-style branding, and GitHub Pages deployment.</li></ul><p><a href="https://lualegria-lab.github.io/pokemonchallenge/" target="_blank" rel="noopener noreferrer">Live demo</a> | <a href="https://github.com/lualegria-lab/pokemonchallenge" target="_blank" rel="noopener noreferrer">GitHub repository</a></p>',
               es: '<p>Iteré la app en Vue desde una lista simple de Pokemon con batalla básica hacia un pequeño producto conectado con PokeAPI y un modelo normalizado de luchadores.</p><ul><li>Carga paginada desde PokeAPI, búsqueda local y en el índice completo, prevención de duplicados y luchadores personalizados.</li><li>Modal de detalle con habilidades, stats, movimientos, altura, peso y experiencia.</li><li>Motor de batalla por turnos con orden por velocidad, efectividad por tipo, dos movimientos por luchador, estados de ganador/derrotado y registro de combate.</li><li>Toolbar más limpia, búsqueda compacta, header simplificado, identidad visual más cercana a un juego y despliegue en GitHub Pages.</li></ul><p><a href="https://lualegria-lab.github.io/pokemonchallenge/" target="_blank" rel="noopener noreferrer">Demo online</a> | <a href="https://github.com/lualegria-lab/pokemonchallenge" target="_blank" rel="noopener noreferrer">Repositorio en GitHub</a></p>'
+            }
+          },
+          {
+            heading: 'Bankist',
+            body: {
+              en: '<p>Bankist is a responsive front-end project for a fictional digital bank, built in HTML, CSS, and vanilla JavaScript while following a course on JS.</p><ul><li>Connected the public landing page with a separate logged-in dashboard for a more realistic flow.</li><li>Implemented mock login, <code>sessionStorage</code> state, transaction history, transfers, loan requests, sorting, account closing, and an automatic logout timer.</li><li>Improved responsiveness, reduced-motion support, modal focus trapping, ARIA details, and keyboard behavior for interactive components.</li></ul><p><a href="https://lualegria-lab.github.io/bankist/" target="_blank" rel="noopener noreferrer">Live demo</a> | <a href="https://github.com/lualegria-lab/bankist" target="_blank" rel="noopener noreferrer">GitHub repository</a></p>',
+              es: '<p>Bankist es un proyecto frontend responsive para un banco digital ficticio, construido con HTML, CSS y JavaScript vanilla a partir de un curso de JS.</p><ul><li>Conecté la landing pública con un dashboard separado para simular un flujo más realista.</li><li>Implementé login mock, estado con <code>sessionStorage</code>, historial de movimientos, transferencias, préstamos, ordenamiento, cierre de cuenta y timer de cierre automático de sesión.</li><li>Mejoré responsive, soporte para reducción de movimiento, manejo de foco en modales, detalles ARIA y comportamiento por teclado.</li></ul><p><a href="https://lualegria-lab.github.io/bankist/" target="_blank" rel="noopener noreferrer">Demo online</a> | <a href="https://github.com/lualegria-lab/bankist" target="_blank" rel="noopener noreferrer">Repositorio en GitHub</a></p>'
             }
           }
         ]
@@ -999,6 +1006,30 @@ export const projects: Project[] = [
             caption: {
               en: 'Pokemon Challenge: turn-based battle result with attacks, winner state, and log.',
               es: 'Pokemon Challenge: resultado de batalla por turnos con ataques, ganador y log.'
+            }
+          },
+          {
+            src: '/assets/bankist-landing.png',
+            alt: 'Bankist landing page hero and login form',
+            caption: {
+              en: 'Bankist: responsive landing page with public navigation and client login.',
+              es: 'Bankist: landing responsive con navegación pública y login de cliente.'
+            }
+          },
+          {
+            src: '/assets/bankist-operations.png',
+            alt: 'Bankist operations tabbed interface',
+            caption: {
+              en: 'Bankist: tabbed operations section with accessible controls.',
+              es: 'Bankist: sección de operaciones con pestañas y controles accesibles.'
+            }
+          },
+          {
+            src: '/assets/bankist-dashboard.png',
+            alt: 'Bankist logged-in banking dashboard',
+            caption: {
+              en: 'Bankist: separate dashboard with transactions, transfers, loan requests, sorting, and auto logout.',
+              es: 'Bankist: dashboard separado con movimientos, transferencias, préstamos, ordenamiento y cierre automático de sesión.'
             }
           }
         ]
