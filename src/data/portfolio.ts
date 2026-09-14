@@ -1005,7 +1005,7 @@ export const projects: Project[] = [
       },
       {
         type: 'embed',
-        url: 'https://www.youtube.com/embed/7bTPI5tvb1c',
+        url: 'https://www.youtube.com/embed/X6NOX1fzKsE',
         title: 'Interactive web apps video'
       }
     ]
