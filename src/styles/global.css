@@ -618,12 +618,7 @@ html[data-lang='es'] .cv-document.localized-media[data-lang='es'] {
 }
 
 .contact-shell {
-  grid-template-columns: minmax(320px, 1fr) minmax(250px, 380px);
-}
-
-.contact-shell figure img {
-  max-height: 560px;
-  object-fit: cover;
+  grid-template-columns: 1fr;
 }
 
 .contact-form {
