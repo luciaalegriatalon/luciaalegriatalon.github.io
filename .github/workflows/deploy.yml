@@ -37,6 +37,7 @@ jobs:
         run: npm run build
         env:
           PUBLIC_SITE_URL: https://luciaalegriatalon.github.io
+          PUBLIC_FORMSPREE_ENDPOINT: https://formspree.io/f/xyekznlw
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
