@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Libro y ejemplares físicos</title>
+  <desc id="desc">Una ficha bibliográfica se conecta con tres ejemplares físicos, cada uno con dueño, tenedor, estado e historial propios.</desc>
+  <rect width="1200" height="630" fill="#18332f"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="70" y="66" fill="#bad3cd" font-size="20" font-weight="700">MODELO DE DOMINIO</text>
+    <rect x="70" y="118" width="350" height="390" rx="24" fill="#f7f8f5"/>
+    <rect x="70" y="118" width="350" height="16" rx="8" fill="#0f766e"/>
+    <text x="110" y="188" fill="#202124" font-size="40" font-weight="700">LIBRO</text>
+    <text x="110" y="224" fill="#5d6864" font-size="20">Ficha bibliográfica compartida</text>
+    <line x1="110" y1="260" x2="380" y2="260" stroke="#d8ded7" stroke-width="2"/>
+    <text x="110" y="314" fill="#202124" font-size="24">ISBN</text>
+    <text x="110" y="362" fill="#202124" font-size="24">Título</text>
+    <text x="110" y="410" fill="#202124" font-size="24">Autoría</text>
+    <text x="110" y="458" fill="#202124" font-size="24">Editorial</text>
+    <path d="M455 313H548" fill="none" stroke="#f4bf4f" stroke-width="5" stroke-linecap="round"/>
+    <path d="M527 292l22 21-22 21" fill="none" stroke="#f4bf4f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="478" y="284" fill="#bad3cd" font-size="18" text-anchor="middle">1 : N</text>
+    <g transform="translate(590 104)">
+      <rect width="540" height="126" rx="18" fill="#edf2ef"/>
+      <circle cx="64" cy="63" r="34" fill="#e95c45"/>
+      <text x="64" y="71" fill="#fff" font-size="23" font-weight="700" text-anchor="middle">01</text>
+      <text x="122" y="52" fill="#202124" font-size="27" font-weight="700">EJEMPLAR FÍSICO</text>
+      <text x="122" y="84" fill="#5d6864" font-size="19">Dueño · tenedor · estado · historial</text>
+    </g>
+    <g transform="translate(590 252)">
+      <rect width="540" height="126" rx="18" fill="#edf2ef"/>
+      <circle cx="64" cy="63" r="34" fill="#f4a621"/>
+      <text x="64" y="71" fill="#18332f" font-size="23" font-weight="700" text-anchor="middle">02</text>
+      <text x="122" y="52" fill="#202124" font-size="27" font-weight="700">EJEMPLAR FÍSICO</text>
+      <text x="122" y="84" fill="#5d6864" font-size="19">Fotos · condición · reglas · circulación</text>
+    </g>
+    <g transform="translate(590 400)">
+      <rect width="540" height="126" rx="18" fill="#edf2ef"/>
+      <circle cx="64" cy="63" r="34" fill="#0f766e"/>
+      <text x="64" y="71" fill="#fff" font-size="23" font-weight="700" text-anchor="middle">03</text>
+      <text x="122" y="52" fill="#202124" font-size="27" font-weight="700">EJEMPLAR FÍSICO</text>
+      <text x="122" y="84" fill="#5d6864" font-size="19">La misma obra, otra historia material</text>
+    </g>
+    <text x="70" y="584" fill="#bad3cd" font-size="20">La ficha describe la obra. El ejemplar permite operar el préstamo real.</text>
+  </g>
+</svg>

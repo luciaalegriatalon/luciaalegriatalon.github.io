@@ -2,8 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
 import Localized from '../../components/Localized.astro';
-import type { Lang, LocalizedAsset } from '../../data/portfolio';
-import { getAsset, getText, projects, ui } from '../../data/portfolio';
+import type { Lang, LocalizedAsset } from '../../data/biblioteca';
+import { getAsset, getText, projects, ui } from '../../data/biblioteca';
 
 export function getStaticPaths() {
   return projects.map((project) => ({

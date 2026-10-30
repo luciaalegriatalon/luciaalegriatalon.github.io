@@ -30,7 +30,7 @@ export type ProjectSection =
       alt: string;
       caption?: LocalizedString;
       wide?: boolean;
-      display?: 'graphic-portrait' | 'writing-portrait';
+      display?: 'graphic-portrait' | 'writing-portrait' | 'showcase-wide';
       transparent?: boolean;
     }
   | {
@@ -97,7 +97,7 @@ export type Project = {
   category: LocalizedString;
   tags: LocalizedString[];
   thumbnail: LocalizedAsset[];
-  thumbnailMode?: 'phone' | 'web-devices' | 'wide-screenshot';
+  thumbnailMode?: 'phone' | 'web-devices' | 'wide-screenshot' | 'device-mockup';
   heroImage?: LocalizedAsset;
   heroAlt?: LocalizedString;
   sections: ProjectSection[];
@@ -196,6 +196,350 @@ export const profile = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: 'biblioteca-circulante',
+    sourceId: 'biblioteca-circulante-2026',
+    title: 'Biblioteca Circulante',
+    category: {
+      en: 'Product strategy, UX & service design',
+      es: 'Estrategia de producto, UX y diseño de servicios'
+    },
+    summary: {
+      en: 'An event-based community library for Argentina: a way to circulate personal books, meet around them, and build a shared history from every exchange.',
+      es: 'Una biblioteca comunitaria basada en eventos para Argentina: una forma de poner en circulación libros propios, encontrarse alrededor de ellos y construir una historia compartida en cada intercambio.'
+    },
+    tags: [
+      { en: 'Product strategy', es: 'Estrategia de producto' },
+      { en: 'UX & accessibility', es: 'UX y accesibilidad' },
+      { en: 'Service design', es: 'Diseño de servicios' },
+      { en: 'Full-Stack Development', es: 'Desarrollo Full-Stack' }
+    ],
+    thumbnail: [
+      '/assets/Biblioteca Circulante transparent device mockup.png'
+    ],
+    thumbnailMode: 'device-mockup',
+    heroImage: '/assets/Biblioteca Circulante transparent device mockup.png',
+    heroAlt: {
+      en: 'Biblioteca Circulante shown on desktop and mobile devices',
+      es: 'Biblioteca Circulante en dispositivos de escritorio y móvil'
+    },
+    sections: [
+      {
+        type: 'text',
+        wide: true,
+        heading: {
+          en: 'The brief: turn books into community',
+          es: 'El desafío: convertir libros en comunidad'
+        },
+        body: {
+          en: '<p>Many books stay on a shelf after changing us. Biblioteca Circulante starts from a different question than a conventional loan service: <strong>how might a personal book keep generating conversations, encounters, and meaning as it moves through a community?</strong></p><p>The product connects two experiences: a shared catalogue that makes idle books available and recurring in-person events where people meet to exchange them. Saving money or clearing shelf space can be a benefit, but the product goal is belonging: circulating something of our own and knowing the people and stories it reaches.</p><p><a class="button" href="https://bibliotecacirculante.com.ar/" target="_blank" rel="noopener noreferrer">Visit the live website</a></p><div class="scope-note"><strong>Market scope</strong><p>The product is designed only for use in Argentina. This portfolio case study is bilingual so an international audience can follow the work; the product interface itself is intentionally Spanish-only.</p></div>',
+          es: '<p>Muchos libros quedan en una biblioteca después de habernos transformado. Biblioteca Circulante parte de una pregunta distinta a la de un servicio de préstamo convencional: <strong>¿cómo puede un libro propio seguir generando conversaciones, encuentros y sentidos mientras circula por una comunidad?</strong></p><p>El producto conecta dos experiencias: un catálogo compartido que pone en movimiento libros ociosos y eventos presenciales recurrentes donde las personas se encuentran para intercambiarlos. Ahorrar una compra o liberar espacio puede ser un beneficio, pero el objetivo de producto es la pertenencia: hacer circular algo propio y conocer las personas e historias que alcanza.</p><p><a class="button" href="https://bibliotecacirculante.com.ar/" target="_blank" rel="noopener noreferrer">Visitar el sitio web</a></p><div class="scope-note"><strong>Alcance de mercado</strong><p>El producto está diseñado exclusivamente para Argentina. Este caso de estudio es bilingüe para que una audiencia internacional pueda seguir el proceso; la interfaz del producto es intencionalmente solo en español.</p></div>'
+        }
+      },
+      {
+        type: 'text',
+        wide: true,
+        heading: { en: 'Community is the product—not a by-product', es: 'La comunidad es el producto, no una consecuencia' },
+        body: {
+          en: '<p>The operating model is necessary, but it serves a social intention. Four product decisions carry that intention through the experience:</p><div class="decision-list community-decisions"><p><strong>Circulate something personal</strong><span>People do not donate anonymous stock: they lend copies they still own and decide how each one can continue travelling.</span></p><p><strong>Meet around books</strong><span>Requests are tied to scheduled events so the hand-off becomes a recurring moment of encounter, not an isolated transaction.</span></p><p><strong>Share the emotional trace</strong><span>Copy profiles include personal notes and annotation rules. An owner can explain what a book meant to them and invite—or limit—the marks left by future readers.</span></p><p><strong>Build a shared biography</strong><span>The copy lifecycle preserves owners, holders, loans, and returns. Traceability creates trust, but also makes visible every pair of hands through which a particular book has passed.</span></p></div>',
+          es: '<p>El modelo operativo es necesario, pero está al servicio de una intención social. Cuatro decisiones de producto sostienen esa intención a lo largo de la experiencia:</p><div class="decision-list community-decisions"><p><strong>Poner en circulación algo propio</strong><span>Las personas no donan stock anónimo: prestan ejemplares que siguen siendo suyos y deciden cómo puede continuar el recorrido de cada uno.</span></p><p><strong>Encontrarse alrededor de los libros</strong><span>Los pedidos se vinculan con eventos programados para que la entrega sea un momento recurrente de encuentro y no una transacción aislada.</span></p><p><strong>Compartir la huella emocional</strong><span>La ficha del ejemplar incluye notas personales y reglas de anotación. Su dueño puede contar qué le generó el libro e invitar —o poner límites— a las marcas de futuras lecturas.</span></p><p><strong>Construir una biografía compartida</strong><span>El ciclo de vida conserva dueños, tenedores, préstamos y devoluciones. La trazabilidad genera confianza, pero también hace visible por qué manos pasó ese ejemplar particular.</span></p></div>'
+        }
+      },
+      {
+        type: 'columns',
+        columns: [
+          {
+            heading: { en: 'The problem', es: 'El problema' },
+            note: { en: 'Idle books, fragmented coordination', es: 'Libros ociosos, coordinación fragmentada' },
+            body: {
+              en: '<ul><li>Personal libraries remain invisible and underused.</li><li>Reading communities lack a shared catalogue and recurring meeting structure.</li><li>Conventional loans record a transaction, but not the meaning or journey of a specific copy.</li></ul>',
+              es: '<ul><li>Las bibliotecas personales permanecen invisibles y con poco uso.</li><li>Las comunidades lectoras no tienen un catálogo compartido ni una estructura recurrente de encuentro.</li><li>El préstamo convencional registra una transacción, pero no el sentido ni el recorrido de un ejemplar particular.</li></ul>'
+            }
+          },
+          {
+            heading: { en: 'My approach', es: 'Mi enfoque' },
+            note: { en: 'Strategy, UX and implementation', es: 'Estrategia, UX e implementación' },
+            body: {
+              en: '<ul><li>Define a community proposition before defining features.</li><li>Translate emotional and social needs into copy, event, and lifecycle decisions.</li><li>Prototype the full service and then build the technical model required to operate it.</li></ul>',
+              es: '<ul><li>Definir una propuesta de comunidad antes que un listado de funcionalidades.</li><li>Traducir necesidades emocionales y sociales en decisiones sobre ejemplares, eventos y ciclos de vida.</li><li>Prototipar el servicio completo y luego construir el modelo técnico necesario para operarlo.</li></ul>'
+            }
+          },
+          {
+            heading: { en: 'V1 principle', es: 'Principio de V1' },
+            note: { en: 'Operationally small, structurally sound', es: 'Operación pequeña, estructura sólida' },
+            body: {
+              en: '<p>V1 deliberately supports a small community of known people. It prioritizes trustworthy records and assisted operations over premature automation.</p>',
+              es: '<p>La V1 está pensada deliberadamente para una comunidad pequeña de personas conocidas. Prioriza registros confiables y operación asistida antes que automatización prematura.</p>'
+            }
+          }
+        ]
+      },
+      {
+        type: 'text',
+        wide: true,
+        heading: { en: 'Benchmarking: the gap was in the logistics', es: 'Benchmarking: la oportunidad estaba en la logística' },
+        body: {
+          en: '<p>I compared peer-to-peer book-sharing products, small-library systems, book-tracking communities, and “library of things” platforms. The closest references solved parts of the problem, but not the complete operating model.</p><div class="benchmark-grid"><article><span>01</span><h3>Peer-to-peer sharing</h3><p>CommonShelf, Libista, Friendli, Bookley and similar products simplify discovery and pickup, but usually leave coordination to chat or proximity.</p></article><article><span>02</span><h3>Library management</h3><p>Librarika, Libib, TinyCat and Koha cover catalogues, members and circulation well, but assume a centrally controlled inventory.</p></article><article><span>03</span><h3>Traceability & objects</h3><p>Inventaire, BookCrossing, myTurn and Lend Engine offered useful patterns for ownership, object history and operational rules.</p></article></div><p><strong>The positioning:</strong> not another catalogue, and not a conventional library. The differentiator is a distributed library where people keep ownership of their books and scheduled community events become the hand-off infrastructure.</p>',
+          es: '<p>Comparé productos de préstamo de libros entre personas, sistemas para bibliotecas pequeñas, comunidades de trazabilidad y plataformas de “biblioteca de objetos”. Los referentes más cercanos resolvían partes del problema, pero no el modelo operativo completo.</p><div class="benchmark-grid"><article><span>01</span><h3>Préstamo entre personas</h3><p>CommonShelf, Libista, Friendli, Bookley y productos similares simplifican el descubrimiento y el retiro, pero suelen dejar la coordinación al chat o a la proximidad.</p></article><article><span>02</span><h3>Gestión bibliotecaria</h3><p>Librarika, Libib, TinyCat y Koha resuelven bien catálogo, miembros y circulación, pero suponen un inventario controlado centralmente.</p></article><article><span>03</span><h3>Trazabilidad y objetos</h3><p>Inventaire, BookCrossing, myTurn y Lend Engine aportaron patrones útiles para propiedad, historial del objeto y reglas operativas.</p></article></div><p><strong>El posicionamiento:</strong> no es otro catálogo ni una biblioteca convencional. El diferencial es una biblioteca distribuida donde cada persona conserva la propiedad de sus libros y los eventos programados funcionan como infraestructura de intercambio.</p>'
+        }
+      },
+      {
+        type: 'media',
+        wide: true,
+        image: {
+          en: '/assets/biblioteca-domain-model-en.svg',
+          es: '/assets/biblioteca-domain-model.svg'
+        },
+        alt: 'Diagram comparing a bibliographic book record with multiple individually owned physical copies',
+        heading: { en: 'The pivotal decision: a book is not a copy', es: 'La decisión clave: un libro no es un ejemplar' },
+        body: {
+          en: '<p>A <strong>book</strong> is the shared bibliographic record: ISBN, title, author, publisher. A <strong>copy</strong> is the real, personal object: it has an owner, a current holder, condition, photos, an emotional note, annotation rules, circulation permissions, and history.</p><p>This distinction does more than prevent duplicated metadata. It lets each copy keep its identity and accumulate a biography: <em>who chose to share it, what it meant to them, which marks are welcome, whose hands it passed through, and where it might travel next.</em></p>',
+          es: '<p>Un <strong>libro</strong> es la ficha bibliográfica compartida: ISBN, título, autor y editorial. Un <strong>ejemplar</strong> es el objeto real y personal: tiene dueño, tenedor actual, estado físico, fotos, una nota emocional, reglas de anotación, permisos de circulación e historial.</p><p>La distinción hace más que evitar metadatos duplicados. Permite que cada ejemplar conserve su identidad y acumule una biografía: <em>quién decidió compartirlo, qué significó para esa persona, qué marcas acepta, por qué manos pasó y hacia dónde podría seguir su recorrido.</em></p>'
+        },
+        caption: { en: 'One bibliographic record can connect to many physical copies with different histories.', es: 'Una ficha bibliográfica puede relacionarse con múltiples ejemplares físicos e historias diferentes.' }
+      },
+      {
+        type: 'text',
+        wide: true,
+        heading: { en: 'Designing encounter and trust into the event flow', es: 'Diseñar encuentro y confianza dentro del flujo de eventos' },
+        body: {
+          en: '<ol class="process-flow"><li><strong>Publish</strong><span>A member adds a physical copy, condition, photos, and circulation rules.</span></li><li><strong>Join</strong><span>Members enrol in an event and choose which copies they will bring.</span></li><li><strong>Request</strong><span>Requests happen inside an open event—not from the global catalogue.</span></li><li><strong>Assign</strong><span>An administrator freezes the offer and resolves requests after registration closes.</span></li><li><strong>Hand off</strong><span>QR-assisted delivery requires confirmation from the receiver, preventing unilateral records.</span></li><li><strong>Return</strong><span>The loan closes, the holder changes back to the owner, and the copy becomes available again.</span></li></ol><p>The flow uses deliberate constraints: 5–20 active copies to participate, a 30-day default loan, owner control over recirculation, and no precise home-location exposure. These are product decisions for a trust-based pilot—not universal rules.</p>',
+          es: '<ol class="process-flow"><li><strong>Publicar</strong><span>Una persona carga un ejemplar físico, su estado, fotos y reglas de circulación.</span></li><li><strong>Inscribirse</strong><span>Las personas se anotan a un evento y eligen qué ejemplares llevarán.</span></li><li><strong>Pedir</strong><span>Los pedidos nacen dentro de un evento abierto, no desde el catálogo global.</span></li><li><strong>Asignar</strong><span>Administración congela la oferta y resuelve pedidos después del cierre.</span></li><li><strong>Entregar</strong><span>La entrega asistida por QR requiere confirmación de quien recibe y evita registros unilaterales.</span></li><li><strong>Devolver</strong><span>Se cierra el préstamo, el tenedor vuelve a ser el dueño y el ejemplar queda disponible.</span></li></ol><p>El flujo usa restricciones deliberadas: entre 5 y 20 ejemplares activos para participar, 30 días de préstamo por defecto, control del dueño sobre la recirculación y ninguna exposición de domicilios precisos. Son decisiones para un piloto basado en confianza, no reglas universales.</p>'
+        }
+      },
+      {
+        type: 'media',
+        wide: true,
+        image: {
+          en: '/assets/biblioteca-user-flow-en.svg',
+          es: '/assets/biblioteca-user-flow-es.svg'
+        },
+        alt: 'User flow from publishing a physical copy to returning it after an event-based loan',
+        caption: {
+          en: 'The service joins a digital request with a verified, in-person hand-off.',
+          es: 'El servicio conecta un pedido digital con una entrega presencial verificada.'
+        }
+      },
+      {
+        type: 'slider',
+        heading: {
+          en: 'A responsive interface for every step',
+          es: 'Una interfaz responsive para cada etapa'
+        },
+        body: {
+          en: '<p>The sequence follows the experience from the public proposition to the member area, catalogue, copy details, publishing flow, and event coordination. The product interface remains in Spanish because the MVP is designed specifically for Argentina.</p>',
+          es: '<p>La secuencia recorre la experiencia desde la propuesta pública hasta el área personal, el catálogo, el detalle de un ejemplar, su publicación y la coordinación de eventos.</p>'
+        },
+        images: [
+          {
+            src: '/assets/bibliodskhome.png',
+            alt: 'Biblioteca Circulante public home page hero',
+            caption: {
+              en: 'Home · Community proposition',
+              es: 'Inicio · Propuesta comunitaria'
+            }
+          },
+          {
+            src: '/assets/bibliodskhome1.png',
+            alt: 'Biblioteca Circulante public home page explaining how the community works',
+            caption: {
+              en: 'Home · How the community works',
+              es: 'Inicio · Cómo funciona la comunidad'
+            }
+          },
+          {
+            src: '/assets/bibliodskpanel.png',
+            alt: 'Biblioteca Circulante member home with personal activity and event information',
+            caption: {
+              en: 'Member area · Personal overview',
+              es: 'Área personal · Resumen de actividad'
+            }
+          },
+          {
+            src: '/assets/bibliodsksidepanel.png',
+            alt: 'Biblioteca Circulante account side panel over the publishing flow',
+            caption: {
+              en: 'Member area · Account and support navigation',
+              es: 'Área personal · Navegación de cuenta y ayuda'
+            }
+          },
+          {
+            src: '/assets/bibliodskcatalogo.png',
+            alt: 'Biblioteca Circulante community catalogue of available physical copies',
+            caption: {
+              en: 'Catalogue · Copies available in the community',
+              es: 'Catálogo · Ejemplares disponibles en la comunidad'
+            }
+          },
+          {
+            src: '/assets/bibliodsklibro.png',
+            alt: 'Biblioteca Circulante copy detail showing condition, emotional notes, annotation rules and lifecycle',
+            caption: {
+              en: 'Copy detail · Identity, rules, and lifecycle',
+              es: 'Detalle del ejemplar · Identidad, reglas y ciclo de vida'
+            }
+          },
+          {
+            src: '/assets/bibliodskcargaejemplar.png',
+            alt: 'First part of the Biblioteca Circulante flow for publishing a physical copy',
+            caption: {
+              en: 'Publish a copy · Book, condition, and emotional note',
+              es: 'Publicar un ejemplar · Libro, estado y nota emocional'
+            }
+          },
+          {
+            src: '/assets/bibliodskcargaejemplar1.png',
+            alt: 'Second part of the Biblioteca Circulante flow for publishing a physical copy',
+            caption: {
+              en: 'Publish a copy · Photos, circulation, and annotation rules',
+              es: 'Publicar un ejemplar · Fotos, circulación y reglas de anotación'
+            }
+          },
+          {
+            src: '/assets/bibliodskevento.png',
+            alt: 'Biblioteca Circulante event detail with attendance and offered copies',
+            caption: {
+              en: 'Event · Attendance and shared copies',
+              es: 'Evento · Asistencia y ejemplares compartidos'
+            }
+          },
+          {
+            src: '/assets/bibliodskevento1.png',
+            alt: 'Biblioteca Circulante event detail with QR handoff, requests, and venue information',
+            caption: {
+              en: 'Event · Requests, QR hand-off, and meeting point',
+              es: 'Evento · Pedidos, entrega con QR y punto de encuentro'
+            }
+          }
+        ]
+      },
+      {
+        type: 'media',
+        wide: true,
+        transparent: true,
+        display: 'showcase-wide',
+        image: '/assets/Eight-phone Spanish library app showcase.png',
+        alt: 'Eight mobile screens from the Spanish Biblioteca Circulante app'
+      },
+      {
+        type: 'columns',
+        columns: [
+          {
+            heading: { en: 'Roles & permissions', es: 'Roles y permisos' },
+            note: { en: 'Least privilege by task', es: 'Permiso mínimo por tarea' },
+            body: {
+              en: '<p>Members manage their own copies and exchanges. Librarians assist with operational hand-offs and returns. Administrators manage events, assignments, users, and roles. Critical state changes are validated again by the API.</p>',
+              es: '<p>Las personas gestionan sus ejemplares e intercambios. Bibliotecarios asisten entregas y devoluciones. Administradores gestionan eventos, asignaciones, usuarios y roles. Los cambios críticos se validan nuevamente en la API.</p>'
+            }
+          },
+          {
+            heading: { en: 'State integrity', es: 'Integridad de estados' },
+            note: { en: 'History instead of overwrite', es: 'Historial en vez de sobrescritura' },
+            body: {
+              en: '<p>A copy cannot be manually marked “on loan”; only a valid loan changes its holder and circulation state. Active loans and pending requests block deletion. Event offers are snapshotted when registration closes.</p>',
+              es: '<p>Un ejemplar no puede marcarse manualmente como “prestado”; solo un préstamo válido cambia tenedor y estado. Préstamos activos y pedidos pendientes bloquean su eliminación. La oferta se guarda como snapshot al cerrar la inscripción.</p>'
+            }
+          },
+          {
+            heading: { en: 'Error prevention', es: 'Prevención de errores' },
+            note: { en: 'Confirmation at meaningful boundaries', es: 'Confirmación en límites significativos' },
+            body: {
+              en: '<p>The receiver confirms an in-person hand-off. Unsaved-change safeguards protect form work. Recoverable errors preserve entered data, and destructive actions are separated from primary actions.</p>',
+              es: '<p>Quien recibe confirma la entrega presencial. Los avisos de cambios sin guardar protegen el trabajo en formularios. Los errores recuperables conservan datos y las acciones destructivas se separan de las principales.</p>'
+            }
+          }
+        ]
+      },
+      {
+        type: 'text',
+        wide: true,
+        heading: { en: 'Design system: warm, clear, and operational', es: 'Sistema de diseño: cercano, claro y operativo' },
+        body: {
+          en: '<p>The system translates the community character into repeatable interface decisions. An editorial display face brings warmth to key moments; a neutral system sans keeps forms, tables, and operational flows fast to scan.</p><div class="design-system-board" aria-label="Biblioteca Circulante design system"><header class="ds-board-header"><span>Biblioteca Circulante</span><small>Design system · V1</small></header><section class="ds-colors"><div class="ds-section-label"><b>01</b><span>Colour roles</span></div><div class="ds-swatch-grid"><span style="--swatch:#18332f"><i></i><b>Navigation</b><small>#18332F</small></span><span style="--swatch:#0f766e"><i></i><b>Primary</b><small>#0F766E</small></span><span style="--swatch:#f4bf4f"><i></i><b>Focus</b><small>#F4BF4F</small></span><span style="--swatch:#f7f8f5"><i></i><b>Background</b><small>#F7F8F5</small></span><span style="--swatch:#202124"><i></i><b>Text</b><small>#202124</small></span><span style="--swatch:#b42318"><i></i><b>Danger</b><small>#B42318</small></span></div></section><section class="ds-type"><div class="ds-section-label"><b>02</b><span>Type scale</span></div><div class="ds-type-list"><div class="display"><small>Display · Georgia · 54–86 / 0.98</small><strong>Books in motion</strong></div><div class="h1"><small>H1 · Arial Bold · 27–36 / 1.10</small><strong>Community catalogue</strong></div><div class="h2"><small>H2 · Arial Bold · 20–32 / 1.20</small><strong>Your available copies</strong></div><div class="body"><small>Body · Arial Regular · 16 / 1.55</small><span>Clear language supports every task and decision.</span></div><div class="label"><small>Label · Arial Extra Bold · 12 / 1.20</small><strong>REGISTRATION OPEN</strong></div></div></section><section class="ds-buttons"><div class="ds-section-label"><b>03</b><span>Buttons</span></div><div class="ds-button-spec"><div class="ds-button-sizes"><span><button class="ds-btn primary large" type="button">Primary action</button><small>L · 48 px</small></span><span><button class="ds-btn primary" type="button">Primary action</button><small>M · 38 px</small></span><span><button class="ds-btn secondary" type="button">Secondary</button><small>M · 38 px</small></span></div><div class="ds-button-states"><span><button class="ds-btn primary" type="button">Default</button><small>Default</small></span><span><button class="ds-btn primary hover" type="button">Hover</button><small>#0B5F59</small></span><span><button class="ds-btn primary focus" type="button">Focus</button><small>6 px ring</small></span><span><button class="ds-btn primary" type="button" disabled>Disabled</button><small>65% opacity</small></span></div></div></section><footer class="ds-board-footer"><span>8 px radius</span><span>8 px spacing base</span><span>44 px touch target</span><span>AA contrast</span></footer></div><p>The scale preserves hierarchy across the public landing page and the denser management interface. Button variants share an 8 px radius and strong labels; hover, keyboard focus, and disabled states remain unmistakable without relying on colour alone.</p>',
+          es: '<p>El sistema traduce el carácter comunitario en decisiones de interfaz repetibles. Una tipografía editorial aporta calidez en los momentos clave; una sans serif de sistema mantiene formularios, tablas y flujos operativos rápidos de escanear.</p><div class="design-system-board" aria-label="Sistema de diseño de Biblioteca Circulante"><header class="ds-board-header"><span>Biblioteca Circulante</span><small>Sistema de diseño · V1</small></header><section class="ds-colors"><div class="ds-section-label"><b>01</b><span>Roles de color</span></div><div class="ds-swatch-grid"><span style="--swatch:#18332f"><i></i><b>Navegación</b><small>#18332F</small></span><span style="--swatch:#0f766e"><i></i><b>Primario</b><small>#0F766E</small></span><span style="--swatch:#f4bf4f"><i></i><b>Foco</b><small>#F4BF4F</small></span><span style="--swatch:#f7f8f5"><i></i><b>Fondo</b><small>#F7F8F5</small></span><span style="--swatch:#202124"><i></i><b>Texto</b><small>#202124</small></span><span style="--swatch:#b42318"><i></i><b>Peligro</b><small>#B42318</small></span></div></section><section class="ds-type"><div class="ds-section-label"><b>02</b><span>Escala tipográfica</span></div><div class="ds-type-list"><div class="display"><small>Display · Georgia · 54–86 / 0.98</small><strong>Libros en movimiento</strong></div><div class="h1"><small>H1 · Arial Bold · 27–36 / 1.10</small><strong>Catálogo comunitario</strong></div><div class="h2"><small>H2 · Arial Bold · 20–32 / 1.20</small><strong>Tus ejemplares disponibles</strong></div><div class="body"><small>Cuerpo · Arial Regular · 16 / 1.55</small><span>Un lenguaje claro acompaña cada tarea y decisión.</span></div><div class="label"><small>Etiqueta · Arial Extra Bold · 12 / 1.20</small><strong>INSCRIPCIÓN ABIERTA</strong></div></div></section><section class="ds-buttons"><div class="ds-section-label"><b>03</b><span>Botones</span></div><div class="ds-button-spec"><div class="ds-button-sizes"><span><button class="ds-btn primary large" type="button">Acción principal</button><small>L · 48 px</small></span><span><button class="ds-btn primary" type="button">Acción principal</button><small>M · 38 px</small></span><span><button class="ds-btn secondary" type="button">Secundaria</button><small>M · 38 px</small></span></div><div class="ds-button-states"><span><button class="ds-btn primary" type="button">Default</button><small>Default</small></span><span><button class="ds-btn primary hover" type="button">Hover</button><small>#0B5F59</small></span><span><button class="ds-btn primary focus" type="button">Foco</button><small>Anillo 6 px</small></span><span><button class="ds-btn primary" type="button" disabled>Deshabilitado</button><small>65% opacidad</small></span></div></div></section><footer class="ds-board-footer"><span>Radio 8 px</span><span>Espaciado base 8 px</span><span>Área táctil 44 px</span><span>Contraste AA</span></footer></div><p>La escala conserva la jerarquía entre la landing pública y la interfaz de gestión, más densa. Las variantes de botón comparten un radio de 8 px y etiquetas de peso alto; los estados hover, foco de teclado y deshabilitado se distinguen sin depender solo del color.</p>'
+        }
+      },
+      {
+        type: 'text',
+        wide: true,
+        heading: { en: 'Heuristic review shaped the interface', es: 'La evaluación heurística dio forma a la interfaz' },
+        body: {
+          en: '<p>An evaluation was conducted following Jakob Nielsen’s 10 usability heuristics for intuitive interface design. The resulting improvements included visible loading, success, empty and error states; consistent naming; recognition-oriented context; task-focused progressive disclosure; and clearer recovery paths.</p><div class="decision-list"><p><strong>Visibility of system status</strong><span>Live regions and task-level feedback communicate loading, saving, success, and failure.</span></p><p><strong>Match with the real world</strong><span>Spanish labels use the community’s physical vocabulary: <em>libro</em>, <em>ejemplar</em>, <em>dueño</em>, <em>tenedor</em>, entrega and devolución.</span></p><p><strong>Consistency and recognition</strong><span>Shared patterns keep actions, filters, badges, and statuses predictable across member and operational views.</span></p><p><strong>User control and recovery</strong><span>Cancellation, focus restoration, preserved form data, and unsaved-change warnings prevent dead ends.</span></p></div>',
+          es: '<p>Se realizó una evaluación siguiendo los 10 principios heurísticos de usabilidad de Jakob Nielsen para el diseño de interfaces intuitivas. Las mejoras incluyeron estados visibles de carga, éxito, vacío y error; nomenclatura consistente; contexto orientado al reconocimiento; revelado progresivo según la tarea y caminos de recuperación más claros.</p><div class="decision-list"><p><strong>Visibilidad del estado del sistema</strong><span>Regiones vivas y feedback por tarea comunican carga, guardado, éxito y error.</span></p><p><strong>Correspondencia con el mundo real</strong><span>Las etiquetas en español usan el vocabulario físico de la comunidad: <em>libro</em>, <em>ejemplar</em>, <em>dueño</em>, <em>tenedor</em>, entrega y devolución.</span></p><p><strong>Consistencia y reconocimiento</strong><span>Patrones compartidos mantienen previsibles acciones, filtros, badges y estados en vistas personales y operativas.</span></p><p><strong>Control y recuperación</strong><span>Cancelación, restitución del foco, conservación de datos y avisos de cambios sin guardar evitan callejones sin salida.</span></p></div>'
+        }
+      },
+      {
+        type: 'columns',
+        columns: [
+          {
+            heading: { en: 'Automated accessibility', es: 'Accesibilidad automatizada' },
+            note: { en: 'Regression protection in CI', es: 'Protección contra regresiones en CI' },
+            body: {
+              en: '<ul><li>Axe fails on serious or critical findings.</li><li>Lighthouse Accessibility requires at least 95/100.</li><li>Keyboard, tab order, forms, reflow, touch targets, contrast, screen-reader semantics, and reduced motion have dedicated Playwright coverage.</li><li>Temporary exceptions require an owner and expiry date.</li></ul>',
+              es: '<ul><li>Axe falla ante hallazgos graves o críticos.</li><li>Lighthouse Accessibility exige al menos 95/100.</li><li>Teclado, orden de tabulación, formularios, reflow, objetivos táctiles, contraste, semántica para lector y reducción de movimiento tienen cobertura Playwright dedicada.</li><li>Las excepciones temporales requieren responsable y vencimiento.</li></ul>'
+            }
+          },
+          {
+            heading: { en: 'Implemented outcomes', es: 'Resultados implementados' },
+            note: { en: 'Across desktop and mobile', es: 'En escritorio y móvil' },
+            body: {
+              en: '<ul><li>Skip link, landmarks, one primary heading, visible focus, and active navigation.</li><li>44 × 44 px minimum touch targets.</li><li>Errors linked to fields, focus moved to the first invalid control, and input preserved after recoverable failures.</li><li>Reflow checks from 320 to 1440 px and with enlarged text.</li></ul>',
+              es: '<ul><li>Enlace para saltar, landmarks, un encabezado principal, foco visible y navegación activa.</li><li>Objetivos táctiles mínimos de 44 × 44 px.</li><li>Errores asociados a campos, foco al primer control inválido y datos conservados ante fallas recuperables.</li><li>Pruebas de reflow entre 320 y 1440 px y con texto ampliado.</li></ul>'
+            }
+          },
+          {
+            heading: { en: 'Honest limits', es: 'Límites transparentes' },
+            note: { en: 'Not a WCAG certification', es: 'No es una certificación WCAG' },
+            body: {
+              en: '<p>Automation cannot validate the full lived experience. Manual testing was conducted with assistive technologies, browser zoom, real devices, system high contrast, and exploratory touch testing. A future evaluation with people with disabilities is still essential to identify barriers that technical and expert reviews may not reveal.</p>',
+              es: '<p>La automatización no permite validar la experiencia completa. Se realizaron pruebas manuales con tecnologías de asistencia, zoom del navegador, dispositivos reales, alto contraste del sistema y exploración táctil. Aun así, queda pendiente una evaluación con personas con discapacidad para detectar barreras que las revisiones técnicas y expertas pueden no revelar.</p>'
+            }
+          }
+        ]
+      },
+      {
+        type: 'text',
+        wide: true,
+        heading: { en: 'Engineering the operating model', es: 'Ingeniería del modelo operativo' },
+        body: {
+          en: '<div class="tech-stack"><span><b>Frontend</b>Next.js 16 · React 19 · TypeScript</span><span><b>Backend</b>Fastify · Zod · Node.js</span><span><b>Data</b>Prisma · MariaDB/MySQL</span><span><b>Media</b>Sharp · WebP processing</span><span><b>Auth</b>Google OAuth · NextAuth</span><span><b>Quality</b>Vitest · Playwright · Axe · Lighthouse</span></div><p>The backend owns domain invariants, permissions, and state transitions. The responsive frontend consumes the real API and changes navigation by role. Images are orientation-corrected, resized, and converted to WebP; QR hand-offs connect an in-person action with a verified digital state change.</p><p>Delivery work also included repeatable database scripts, production environment separation, standalone frontend packaging, database migrations, seeded test data, and CI coverage for the consolidated UX audit.</p>',
+          es: '<div class="tech-stack"><span><b>Frontend</b>Next.js 16 · React 19 · TypeScript</span><span><b>Backend</b>Fastify · Zod · Node.js</span><span><b>Datos</b>Prisma · MariaDB/MySQL</span><span><b>Imágenes</b>Sharp · procesamiento WebP</span><span><b>Acceso</b>Google OAuth · NextAuth</span><span><b>Calidad</b>Vitest · Playwright · Axe · Lighthouse</span></div><p>El backend es responsable de invariantes de dominio, permisos y transiciones de estado. El frontend responsive consume la API real y adapta la navegación según el rol. Las imágenes corrigen orientación, se redimensionan y convierten a WebP; los QR conectan una entrega presencial con un cambio de estado digital verificado.</p><p>El trabajo de entrega también incluyó scripts repetibles de base de datos, separación de ambientes, empaquetado standalone del frontend, migraciones, datos de prueba y cobertura CI para la auditoría UX consolidada.</p>'
+        }
+      },
+      {
+        type: 'media',
+        wide: true,
+        image: {
+          en: '/assets/biblioteca-architecture-en.svg',
+          es: '/assets/biblioteca-architecture-es.svg'
+        },
+        alt: 'Layered architecture connecting people, Next.js, Fastify, authentication, image processing and MariaDB',
+        caption: {
+          en: 'The API is the trust boundary: it owns permissions, invariants, and state transitions.',
+          es: 'La API es el límite de confianza: concentra permisos, invariantes y transiciones de estado.'
+        }
+      },
+      {
+        type: 'text',
+        wide: true,
+        heading: { en: 'Next: reduce friction without losing closeness', es: 'Próximos pasos: reducir fricción sin perder cercanía' },
+        body: {
+          en: '<p>The next product iterations should make joining and organising easier while protecting the community-led model.</p><div class="roadmap-grid"><article><span>01</span><h3>External book data</h3><p>Connect an ISBN-based catalogue to prefill bibliographic data, reduce manual entry, and keep members focused on the personal details of their copy.</p></article><article><span>02</span><h3>Maps for events</h3><p>Integrate Google Maps for venue discovery, directions, and useful location context without exposing members’ private addresses.</p></article><article><span>03</span><h3>More ways to register</h3><p>Add email and other appropriate sign-in options beyond Google OAuth so access to the community does not depend on a single provider.</p></article><article><span>04</span><h3>Automated assignment</h3><p>Develop an assignment algorithm that resolves competing loan requests fairly and reduces manual administration when several participants request the same copy.</p></article><article><span>05</span><h3>Incident management</h3><p>Define clear flows for damaged or lost copies, failed hand-offs, cancellations, and no-shows, including responsibilities and fair resolution criteria.</p></article><article><span>06</span><h3>Email and push notifications</h3><p>Extend the existing in-app notifications with email and push delivery, including timely reminders for registration deadlines, event attendance, hand-offs, and returns.</p></article></div><p>These are hypotheses to validate with real communities. They should follow—not replace—testing the event format, participation rules, no-shows, damage to physical copies, and whether the model creates meaningful interactions over time.</p>',
+          es: '<p>Las próximas iteraciones deberían facilitar el ingreso y la organización sin perder el modelo conducido por la comunidad.</p><div class="roadmap-grid"><article><span>01</span><h3>Base externa de libros</h3><p>Conectar un catálogo por ISBN para completar datos bibliográficos, reducir la carga manual y dejar que cada persona se concentre en los detalles propios de su ejemplar.</p></article><article><span>02</span><h3>Mapas para los eventos</h3><p>Integrar Google Maps para descubrir sedes, obtener indicaciones y aportar contexto útil de ubicación sin exponer domicilios privados.</p></article><article><span>03</span><h3>Más formas de registro</h3><p>Incorporar email y otras alternativas pertinentes además de Google OAuth para que el acceso a la comunidad no dependa de un único proveedor.</p></article><article><span>04</span><h3>Asignación automatizada</h3><p>Desarrollar un algoritmo que resuelva de forma justa los pedidos de préstamo en conflicto y reduzca la gestión manual cuando varias personas soliciten el mismo ejemplar.</p></article><article><span>05</span><h3>Gestión de incidencias</h3><p>Definir flujos claros ante daños o pérdidas de ejemplares, entregas fallidas, cancelaciones y ausencias, incluyendo responsabilidades y criterios de resolución justos.</p></article><article><span>06</span><h3>Notificaciones por email y push</h3><p>Ampliar las notificaciones locales existentes con envíos por email y push, además de recordatorios oportunos sobre cierres de inscripción, asistencia a eventos, entregas y devoluciones.</p></article></div><p>Son hipótesis que deben validarse con comunidades reales. Deberían acompañar —no reemplazar— las pruebas sobre el formato de los eventos, las reglas de participación, las ausencias, los posibles daños a los ejemplares y la capacidad del modelo para generar interacciones significativas a lo largo del tiempo.</p>'
+        }
+      },
+      {
+        type: 'embed',
+        url: 'https://www.youtube-nocookie.com/embed/OB-aqV10ZgI',
+        title: 'Biblioteca Circulante project video',
+        heading: { en: 'What this project demonstrates', es: 'Qué demuestra este proyecto' },
+        body: {
+          en: '<p>Biblioteca Circulante shows how product strategy can turn a social intention into a service: personal books become shared stories, events create repeated encounters, and each copy preserves the emotional and physical traces of its journey.</p><p>Service logistics, UX language, accessibility, and software architecture make that promise viable. The technology matters because it protects ownership, coordinates real-world exchanges, and preserves memory—but the outcome being designed is a closer reading community.</p>',
+          es: '<p>Biblioteca Circulante muestra cómo la estrategia de producto puede convertir una intención social en un servicio: los libros propios se vuelven historias compartidas, los eventos generan encuentros recurrentes y cada ejemplar conserva las huellas emocionales y físicas de su recorrido.</p><p>La logística, el lenguaje UX, la accesibilidad y la arquitectura técnica vuelven viable esa promesa. La tecnología importa porque protege la propiedad, coordina intercambios reales y conserva memoria. Pero el resultado que se diseña es una comunidad lectora más cercana.</p>'
+        }
+      }
+    ]
+  },
   {
     slug: 'buscarte-app',
     sourceId: '647bc021',

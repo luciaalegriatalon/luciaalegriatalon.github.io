@@ -2,13 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import Localized from '../components/Localized.astro';
-import { profile, projects, ui } from '../data/portfolio';
+import { profile, projects, ui } from '../data/biblioteca';
 
 const description =
   'Lucía Alegria is a communications specialist and UX designer based in Barcelona, focused on clear digital products and user-centered experiences.';
 const homeProjects = [
+  ...projects.filter((project) => project.slug === 'biblioteca-circulante'),
   ...projects.filter((project) => project.slug === 'tiburoncin-job-bot'),
-  ...projects.filter((project) => project.slug !== 'tiburoncin-job-bot')
+  ...projects.filter(
+    (project) => !['biblioteca-circulante', 'tiburoncin-job-bot'].includes(project.slug)
+  )
 ];
 ---
 
